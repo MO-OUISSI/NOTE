@@ -101,7 +101,7 @@ function displayTasks() {
             ${imageHTML}
             <div class="button-container">
                 <button onclick="editTask(${index})" class="edit">تعديل</button>
-                <button onclick="deleteTask(${index})">حذف</button>
+                <button onclick="deleteTask(${index})" class="delete">حذف</button>
             </div>
         `;
         taskList.appendChild(card);
