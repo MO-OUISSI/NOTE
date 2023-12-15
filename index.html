@@ -13,15 +13,15 @@
         <h1>مدير المهام والملاحظات</h1>
         <form id="taskForm">
             <label for="task" class="gg">note</label>
-            <input type="text" id="task" required class="gg">
+            <input type="text" id="task" required class="gg" placeholder="entrer notes">
 
             
-            <label for="imgw" className='bvb4'>Selectionner image</label>
-            <input type="file" id="image" accept="image/*" onchange="previewImage(this)" className='bvb9'>
+            <label for="imgw" class="gg">Selectionner image</label>
+            <input type="file" id="image" accept="image/*" onchange="previewImage(this)" className='bvb9' for="imgw">
 
             <img id="previewImage" src="#" alt="Task Image" class="img-preview"> <!-- إضافة العنصر img للعرض المبدئي للصورة -->
 
-            <button type="button" onclick="addTask()" class="button">إضافة</button>
+            <button type="button" onclick="addTask()" class="button1">إضافة</button>
         </form>
 
         <ul id="taskList"></ul>
