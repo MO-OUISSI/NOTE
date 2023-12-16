@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مدير المهام والملاحظات</title>
+    <title>TO DO LIST</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="container">
-        <h1>مدير المهام والملاحظات</h1>
+        <h1>to do List</h1>
         <form id="taskForm">
             <label for="task" class="gg">note</label>
             <input type="text" id="task" required class="gg" placeholder="entrer notes">
@@ -21,8 +21,9 @@
 
             <img id="previewImage" src="#" alt="Task Image" class="img-preview"> <!-- إضافة العنصر img للعرض المبدئي للصورة -->
 
-            <button type="button" onclick="addTask()" class="button1">إضافة</button>
+            <button type="button" onclick="addTask()" class="button1">Add</button>
         </form>
+        
 
         <ul id="taskList"></ul>
     </div>
