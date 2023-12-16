@@ -18,6 +18,10 @@ h1{
     margin-top: 20px;
     border-radius: 8px;
     width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -43,6 +47,7 @@ ul {
 .img {
     width: 100%;
     height: auto;
+    border-radius: 14px;
 }
 
 .button-container {
@@ -69,7 +74,9 @@ ul {
     margin: 10px;
 
 }
-
+button:hover{
+    background-color: #4caf4fd3;
+}
 .button-container button.edit {
     background-color: #ff9800;
 }
@@ -99,6 +106,7 @@ input[type="file"]:focus {
     margin: 3px;
     outline: none;
     border: 2px solid #ccc;
+    border-radius: 10px;
 }
 #task:focus{
     
@@ -134,15 +142,41 @@ input[type="file"]:focus {
 .img_pr7{
     width: 200px;
 }
+#image{
+    background-color: white;
+    border-radius: 10px;
+}
 
 .gg{
     margin: 3px;
     font-size: 20px;
     font-weight: 700;
 }
+#taskForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(224, 241, 214);
+    width: 90%;
+    padding: 10px;
+    border-radius: 20px;
+
+}
+.entry-date {
+    font-size: 17px;
+    color: #646464;
+}
+
+
+
+
+
+
+
 @media screen and (max-width: 600px) {
     .container {
-        width: 86%;
+        width: 80%;
     }
     .card{
         width: 93%;
