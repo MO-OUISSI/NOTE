@@ -1,6 +1,5 @@
 let tasks = [];
 
-// تحميل المهام المحفوظة عند بدء التطبيق
 window.onload = function () {
     const storedTasks = localStorage.getItem('tasks');
     if (storedTasks) {
@@ -10,29 +9,26 @@ window.onload = function () {
 };
 
 function saveTasks() {
-    // حفظ المهام في ذاكرة التخزين المحلية
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 function isLocalStorageFull() {
     const data = JSON.stringify(localStorage);
     const sizeInBytes = new Blob([data]).size;
-    const maxSizeInBytes = 5 * 1024 * 1024; // حدود تخزين المتصفح الافتراضية (5 MB)
+    const maxSizeInBytes = 5 * 1024 * 1024;
 
     return sizeInBytes >= maxSizeInBytes;
 }
 
 function previewImage(input) {
     const previewImage = document.getElementById('previewImage');
-
     const imageFile = input.files[0];
 
     if (imageFile) {
         const reader = new FileReader();
         reader.onload = function (e) {
-            // عرض الصورة المحددة مباشرة
             previewImage.src = e.target.result;
-            previewImage.style.display = 'block'; // إظهار الصورة
+            previewImage.style.display = 'block';
         };
 
         reader.readAsDataURL(imageFile);
@@ -55,6 +51,7 @@ function addTask() {
     const task = {
         text: taskText,
         image: '',
+        entryDate: new Date().toLocaleString() // تاريخ الإدخال
     };
 
     if (imageFile) {
@@ -62,24 +59,23 @@ function addTask() {
         reader.onload = function (e) {
             task.image = e.target.result;
 
-            tasks.push(task);
-            saveTasks(); // حفظ المهام في ذاكرة التخزين المحلية
+            tasks.unshift(task);
+            saveTasks();
             displayTasks();
             taskInput.value = '';
             imageInput.value = '';
-
-            // إخفاء الصورة بعد الإضافة
             previewImage.style.display = 'none';
         };
 
         reader.readAsDataURL(imageFile);
     } else {
-        tasks.push(task);
-        saveTasks(); // حفظ المهام في ذاكرة التخزين المحلية
+        tasks.unshift(task);
+        saveTasks();
         displayTasks();
         taskInput.value = '';
     }
 }
+
 
 function displayTasks() {
     const taskList = document.getElementById('taskList');
@@ -89,25 +85,24 @@ function displayTasks() {
         const card = document.createElement('li');
         card.className = 'card';
 
-        let imageHTML = '';  // يبدأ العنصر الفارغ
+        let imageHTML = '';
 
         if (task.image) {
-            // إذا كان هناك صورة، يتم عرض العنصر
             imageHTML = `<img src="${task.image}" alt="Task Image" class="img">`;
         }
 
         card.innerHTML = `
+            <div class="entry-date">${task.entryDate}</div>
             <span>${task.text}</span>
             ${imageHTML}
             <div class="button-container">
-                <button onclick="editTask(${index})" class="edit">تعديل</button>
-                <button onclick="deleteTask(${index})" class="delete">حذف</button>
+                <button onclick="editTask(${index})" class="edit">edit</button>
+                <button onclick="deleteTask(${index})" class="delete">delete</button>
             </div>
         `;
         taskList.appendChild(card);
     });
 }
-
 
 function editTask(index) {
     const newText = prompt('يرجى تعديل المهمة:', tasks[index].text);
@@ -120,13 +115,13 @@ function editTask(index) {
             tasks[index].image = newImage;
         }
 
-        saveTasks(); // حفظ المهام بعد التعديل
+        saveTasks();
         displayTasks();
     }
 }
 
 function deleteTask(index) {
     tasks.splice(index, 1);
-    saveTasks(); // حفظ المهام بعد الحذف
+    saveTasks();
     displayTasks();
 }
