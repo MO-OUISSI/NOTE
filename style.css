@@ -98,7 +98,7 @@ input[type="file"]:focus {
 }
 
 #task{
-    width: 268px;
+    width: 240px;
     height: 28px;
     font-size: 20px;
     padding: 3px;
@@ -145,6 +145,7 @@ input[type="file"]:focus {
 #image{
     background-color: white;
     border-radius: 10px;
+    width: 240px;
 }
 
 .gg{
